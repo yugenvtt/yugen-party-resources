@@ -2,7 +2,7 @@
 
 A party resources manager for campaigns with macros and customization.
 
-<video src=".github/assets/yugen-party-resources.webm" width="100%" controls muted autoplay loop></video>
+<video src="https://github.com/yugenvtt/yugen-party-resources/raw/main/.github/assets/yugen-party-resources.webm" width="100%" controls muted autoplay loop></video>
 
 ## Features
 
