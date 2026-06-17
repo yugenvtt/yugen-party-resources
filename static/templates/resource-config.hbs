@@ -1,0 +1,34 @@
+<div class="yugen-resource-config-dialog">
+	<div class="yugen-config-header">
+		<button type="button" class="yugen-config-btn secondary" data-action="add">
+			<i class="fas fa-plus"></i> {{localize "yugen-party-resources.config.add-btn"}}
+		</button>
+	</div>
+
+	<div class="yugen-config-list">
+		{{#each resources}}
+		<div class="yugen-config-row" data-index="{{@index}}">
+			<input type="text" name="label-{{@index}}" value="{{this.label}}" placeholder="{{localize 'yugen-party-resources.config.label-placeholder'}}" required />
+			<div class="yugen-input-with-button">
+				<input type="text" name="icon-{{@index}}" value="{{this.icon}}" placeholder="{{localize 'yugen-party-resources.config.icon-placeholder'}}" required />
+				<button type="button" class="yugen-file-picker-btn" data-target="icon-{{@index}}" title="Browse Files">
+					<i class="fas fa-file-import"></i>
+				</button>
+			</div>
+			<input type="number" name="value-{{@index}}" value="{{this.value}}" placeholder="{{localize 'yugen-party-resources.config.value-placeholder'}}" required />
+			<button type="button" class="yugen-config-edit-row-btn {{#if (or this.macroId this.script)}}has-action{{/if}}" data-action="edit-action" data-index="{{@index}}" title="Configure Click Actions">
+				<i class="fas fa-code"></i>
+			</button>
+			<button type="button" class="yugen-config-delete-btn" data-action="delete" data-index="{{@index}}">
+				<i class="fas fa-trash"></i>
+			</button>
+		</div>
+		{{/each}}
+	</div>
+
+	<div class="yugen-config-actions">
+		<button type="submit" class="yugen-config-btn primary">
+			<i class="fas fa-save"></i> {{localize "yugen-party-resources.config.save-btn"}}
+		</button>
+	</div>
+</div>

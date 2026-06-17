@@ -1,0 +1,6 @@
+node_modules/
+dist/
+vite.local.ts
+vite.local.js
+.env
+module.zip

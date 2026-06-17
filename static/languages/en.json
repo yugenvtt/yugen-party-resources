@@ -1,0 +1,44 @@
+{
+	"yugen-party-resources": {
+		"settings": {
+			"hide-ui": {
+				"name": "Hide Floating Bar",
+				"hint": "if enabled, the floating party resources bar is hidden."
+			},
+			"ui-opacity": {
+				"name": "UI Opacity",
+				"hint": "the transparency of the floating resources bar."
+			},
+			"ui-scale": {
+				"name": "UI Scale",
+				"hint": "the size of the floating resources bar."
+			},
+			"ui-offset-x": {
+				"name": "Horizontal Offset (X)",
+				"hint": "horizontal position adjustment (in pixels) from the center."
+			},
+			"ui-offset-y": {
+				"name": "Vertical Offset (Y)",
+				"hint": "vertical position adjustment (in pixels) from the bottom."
+			}
+		},
+		"config": {
+			"title": "yugen-party-resources",
+			"action-title": "yugen-party-resources-action",
+			"add-btn": "Add Resource",
+			"save-btn": "Save Resources",
+			"save-action-btn": "Save Action",
+			"label-placeholder": "Resource Label",
+			"icon-placeholder": "icon class or image path (e.g., fas fa-coins)",
+			"value-placeholder": "starting value",
+			"macro-label": "Click Macro",
+			"script-label": "Custom Click Script"
+		},
+		"viewer": {
+			"title": "yugen-party-resources"
+		},
+		"chat": {
+			"updated": "<strong>{user}</strong> updated party resource <strong>{label}</strong>: {old} &rarr; {new} ({diff})"
+		}
+	}
+}

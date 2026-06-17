@@ -1,0 +1,17 @@
+<div class="yugen-resource-viewer-dialog">
+	<div class="yugen-viewer-list">
+		{{#each resources}}
+		<div class="yugen-viewer-row {{#if this.has_click_action}}is-clickable{{/if}}" data-id="{{this.id}}">
+			<div class="yugen-viewer-icon-container" title="{{this.label}}">
+				{{#if this.is_fa}}
+				<i class="{{this.icon}}"></i>
+				{{else}}
+				<img src="{{this.icon}}" />
+				{{/if}}
+			</div>
+			<span class="yugen-viewer-label">{{this.label}}</span>
+			<span class="yugen-viewer-value">{{this.value}}</span>
+		</div>
+		{{/each}}
+	</div>
+</div>
