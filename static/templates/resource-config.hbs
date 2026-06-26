@@ -26,6 +26,14 @@
 		{{/each}}
 	</div>
 
+	<div class="yugen-config-container-setting">
+		<label>
+			{{localize "yugen-party-resources.settings.container-actor-id.name"}}
+			<i class="fas fa-question-circle" data-tooltip="{{localize 'yugen-party-resources.settings.container-actor-id.hint'}}"></i>
+		</label>
+		<input type="text" name="containerActorId" value="{{containerActorId}}" placeholder="e.g. Party Chest" />
+	</div>
+
 	<div class="yugen-config-actions">
 		<button type="submit" class="yugen-config-btn primary">
 			<i class="fas fa-save"></i> {{localize "yugen-party-resources.config.save-btn"}}

@@ -3,23 +3,27 @@
 		"settings": {
 			"hide-ui": {
 				"name": "Hide Floating Bar",
-				"hint": "if enabled, the floating party resources bar is hidden."
+				"hint": "If enabled, the floating party resources bar is hidden."
 			},
 			"ui-opacity": {
 				"name": "UI Opacity",
-				"hint": "the transparency of the floating resources bar."
+				"hint": "The transparency of the floating resources bar."
 			},
 			"ui-scale": {
 				"name": "UI Scale",
-				"hint": "the size of the floating resources bar."
+				"hint": "The size of the floating resources bar."
 			},
 			"ui-offset-x": {
 				"name": "Horizontal Offset (X)",
-				"hint": "horizontal position adjustment (in pixels) from the center."
+				"hint": "Horizontal position adjustment (in pixels) from the center."
 			},
 			"ui-offset-y": {
 				"name": "Vertical Offset (Y)",
-				"hint": "vertical position adjustment (in pixels) from the bottom."
+				"hint": "Vertical position adjustment (in pixels) from the bottom."
+			},
+			"container-actor-id": {
+				"name": "Party Container",
+				"hint": "The name or ID of the shared party container (can be a Loot Actor, a Container Item, or a Token on the scene). If found, the backpack button opens its sheet; otherwise, it opens the resource viewer."
 			}
 		},
 		"config": {
@@ -29,13 +33,14 @@
 			"save-btn": "Save Resources",
 			"save-action-btn": "Save Action",
 			"label-placeholder": "Resource Label",
-			"icon-placeholder": "icon class or image path (e.g., fas fa-coins)",
-			"value-placeholder": "starting value",
+			"icon-placeholder": "Icon class or image path (e.g., fas fa-coins)",
+			"value-placeholder": "Starting value",
 			"macro-label": "Click Macro",
 			"script-label": "Custom Click Script"
 		},
 		"viewer": {
-			"title": "yugen-party-resources"
+			"title": "yugen-party-resources",
+			"view-all": "View all resources"
 		},
 		"chat": {
 			"updated": "<strong>{user}</strong> updated party resource <strong>{label}</strong>: {old} &rarr; {new} ({diff})"

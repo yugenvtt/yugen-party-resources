@@ -4,6 +4,7 @@
  **/
 
 import { ResourceConfig } from './resource-config.js';
+import { ResourceViewer } from './resource-viewer.js';
 import { post_change_to_chat } from './utils.js';
 
 export class PartyResources extends ( foundry.applications.api.ApplicationV2 as any ) 
@@ -82,7 +83,7 @@ export class PartyResources extends ( foundry.applications.api.ApplicationV2 as 
 		/** position styles dynamically calculated **/
 		const bar_style = `
 			opacity: ${ opacity };
-			transform: scale(${ scale });
+			transform: scale( ${ scale } );
 			bottom: ${ 24 + off_y }px;
 			left: ${ 24 + off_x }px;
 		`;
@@ -131,6 +132,9 @@ export class PartyResources extends ( foundry.applications.api.ApplicationV2 as 
 						${ list_html }
 					</ul>
 					<div class="yugen-bar-actions">
+						<button class="yugen-bar-action-btn" data-action="view" title="${ ( game as any ).i18n.localize( 'yugen-party-resources.viewer.view-all' ) }">
+							<i class="fas fa-backpack"></i>
+						</button>
 						<button class="yugen-bar-toggle" data-action="minimize" title="Minimize">
 							<i class="fas fa-chevron-down"></i>
 						</button>
@@ -154,6 +158,61 @@ export class PartyResources extends ( foundry.applications.api.ApplicationV2 as 
 	{
 		console.log( 'yugen-party-resources | replacing HTML. element:', !!this.element );
 		content.innerHTML = result;
+
+		/** view button **/
+		content.querySelector( '[data-action="view"]' )?.addEventListener( 'click', ( ) => 
+		{
+			const container_id = ( game as any ).settings.get( 'yugen-party-resources', 'container-actor-id' );
+			let sheet_doc = null;
+
+			if ( container_id ) 
+			{
+				/** 1. search actor directory **/
+				sheet_doc = ( game as any ).actors.get( container_id ) || ( game as any ).actors.getName( container_id );
+
+				/** 2. search item directory (e.g. container item) **/
+				if ( !sheet_doc ) 
+				{
+					sheet_doc = ( game as any ).items.get( container_id ) || ( game as any ).items.getName( container_id );
+				}
+
+				/** 3. search scene tokens **/
+				if ( !sheet_doc && canvas.ready ) 
+				{
+					const token = ( canvas as any ).tokens.placeables.find( ( t: any ) => 
+					{
+						return t.name === container_id || t.id === container_id;
+					} );
+
+					if ( token ) 
+					{
+						sheet_doc = token.actor;
+					}
+				}
+			}
+
+			if ( sheet_doc ) 
+			{
+				try 
+				{
+					sheet_doc.sheet.render( 
+					{
+						force: true
+					} );
+				}
+				catch ( e ) 
+				{
+					sheet_doc.sheet.render( true );
+				}
+			}
+			else 
+			{
+				ResourceViewer.instance.render( 
+				{
+					force: true
+				} );
+			}
+		} );
 
 		/** minimize button **/
 		content.querySelector( '[data-action="minimize"]' )?.addEventListener( 'click', async ( ) => 

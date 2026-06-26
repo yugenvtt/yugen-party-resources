@@ -202,6 +202,48 @@ div[id="yugen-party-resources-bar"] {
 	height: 100%;
 }
 
+.yugen-config-container-setting {
+	margin-top: 24px;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	padding: 4px;
+	border-top: 1px solid rgba(255, 255, 255, 0.12);
+	padding-top: 20px;
+}
+
+.yugen-config-container-setting label {
+	font-family: "Signika", sans-serif;
+	font-size: 12px;
+	font-weight: 600;
+	color: var(--yugen-resources-text-muted);
+	text-transform: uppercase;
+	display: flex;
+	align-items: center;
+}
+
+.yugen-config-container-setting label i {
+	margin-left: 6px;
+	cursor: help;
+	color: var(--yugen-resources-text-muted);
+	transition: color 0.15s ease;
+	font-size: 11px;
+}
+
+.yugen-config-container-setting label i:hover {
+	color: var(--yugen-resources-accent);
+}
+
+.yugen-config-container-setting input[type="text"] {
+	background: rgba(0, 0, 0, 0.4);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 4px;
+	color: #fff;
+	padding: 8px 10px;
+	width: 100%;
+	box-sizing: border-box;
+}
+
 .yugen-config-header {
 	display: flex;
 	justify-content: space-between;

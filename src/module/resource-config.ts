@@ -65,9 +65,11 @@ export class ResourceConfig extends HandlebarsApplicationMixin( ApplicationV2 )
 	override async _prepareContext( _options: any ): Promise<any> 
 	{
 		console.log( 'yugen-party-resources | ResourceConfig preparing context:', this._resources );
+		const containerActorId = ( game as any ).settings.get( 'yugen-party-resources', 'container-actor-id' ) || '';
 		return ( 
 		{
-			resources: this._resources
+			resources: this._resources,
+			containerActorId: containerActorId
 		} );
 	}
 
@@ -184,6 +186,12 @@ export class ResourceConfig extends HandlebarsApplicationMixin( ApplicationV2 )
 
 			/** update world setting database **/
 			await ( game as any ).settings.set( 'yugen-party-resources', 'resources', this._resources );
+
+			const container_input = this.element.querySelector( '[name="containerActorId"]' ) as HTMLInputElement;
+			if ( container_input ) 
+			{
+				await ( game as any ).settings.set( 'yugen-party-resources', 'container-actor-id', container_input.value.trim( ) );
+			}
 
 			/** post created or edited resource changes to chat **/
 			for ( const new_res of this._resources ) 

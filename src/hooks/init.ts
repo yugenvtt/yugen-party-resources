@@ -109,6 +109,21 @@ export function init_hook( ) : void
 			default: false
 		} );
 
+		/** register container actor ID or name setting **/
+		( game as any ).settings.register( 'yugen-party-resources', 'container-actor-id', 
+		{
+			name: 'yugen-party-resources.settings.container-actor-id.name',
+			hint: 'yugen-party-resources.settings.container-actor-id.hint',
+			scope: 'world',
+			config: true,
+			type: String,
+			default: '',
+			onChange: ( ) => 
+			{
+				( Hooks as any ).call( 'yugen-party-resources.refresh' );
+			}
+		} );
+
 		/** register hidden resources array setting **/
 		( game as any ).settings.register( 'yugen-party-resources', 'resources', 
 		{
