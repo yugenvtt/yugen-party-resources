@@ -1,42 +1,47 @@
-<div class="yugen-resource-config-dialog">
-	<div class="yugen-config-header">
-		<button type="button" class="yugen-config-btn secondary" data-action="add">
-			<i class="fas fa-plus"></i> {{localize "yugen-party-resources.config.add-btn"}}
-		</button>
-	</div>
+<form style="display: flex; flex-direction: column; height: 100%; width: 100%;">
+	<header class="sheet-header">
+		<div class="header-details">
+			<h1 class="charname">yugen-party-resources</h1>
+		</div>
+	</header>
 
-	<div class="yugen-config-list">
-		{{#each resources}}
-		<div class="yugen-config-row" data-index="{{@index}}">
-			<input type="text" name="label-{{@index}}" value="{{this.label}}" placeholder="{{localize 'yugen-party-resources.config.label-placeholder'}}" required />
-			<div class="yugen-input-with-button">
-				<input type="text" name="icon-{{@index}}" value="{{this.icon}}" placeholder="{{localize 'yugen-party-resources.config.icon-placeholder'}}" required />
-				<button type="button" class="yugen-file-picker-btn" data-target="icon-{{@index}}" title="Browse Files">
-					<i class="fas fa-file-import"></i>
-				</button>
-			</div>
-			<input type="number" name="value-{{@index}}" value="{{this.value}}" placeholder="{{localize 'yugen-party-resources.config.value-placeholder'}}" required />
-			<button type="button" class="yugen-config-edit-row-btn {{#if (or this.macroId this.script)}}has-action{{/if}}" data-action="edit-action" data-index="{{@index}}" title="Configure Click Actions">
-				<i class="fas fa-code"></i>
-			</button>
-			<button type="button" class="yugen-config-delete-btn" data-action="delete" data-index="{{@index}}">
-				<i class="fas fa-trash"></i>
+	<div class="yugen-config-body">
+		<div class="form-group" style="margin-bottom: 20px;">
+			<button type="button" data-action="add" style="width: 100%;">
+				<i class="fas fa-plus"></i> {{localize "yugen-party-resources.config.add-btn"}}
 			</button>
 		</div>
+
+		{{#each resources}}
+		<fieldset class="form-group" style="padding: 12px;">
+			<div class="form-fields">
+				<input type="text" name="label-{{@index}}" value="{{this.label}}" placeholder="{{localize 'yugen-party-resources.config.label-placeholder'}}" required style="flex: 1.5;" />
+				<div class="yugen-input-with-button" style="display: flex; gap: 4px; flex: 2;">
+					<input type="text" name="icon-{{@index}}" value="{{this.icon}}" placeholder="{{localize 'yugen-party-resources.config.icon-placeholder'}}" required />
+					<button type="button" data-target="icon-{{@index}}" class="yugen-file-picker-btn" title="Browse Files" style="flex: 0 0 34px;">
+						<i class="fas fa-file-import"></i>
+					</button>
+				</div>
+				<input type="number" name="value-{{@index}}" value="{{this.value}}" placeholder="{{localize 'yugen-party-resources.config.value-placeholder'}}" required style="width: 70px; text-align: center; flex: none;" />
+				<button type="button" class="{{#if (or this.macroId this.script)}}active{{/if}}" data-action="edit-action" data-index="{{@index}}" title="Configure Click Actions" style="{{#if (or this.macroId this.script)}}color: var(--yugen-accent); border-color: var(--yugen-accent-border);{{/if}}">
+					<i class="fas fa-code"></i>
+				</button>
+				<button type="button" data-action="delete" data-index="{{@index}}" style="color: var(--yugen-danger); border-color: var(--yugen-danger-border);">
+					<i class="fas fa-trash"></i>
+				</button>
+			</div>
+		</fieldset>
 		{{/each}}
+
+		<fieldset>
+			<legend>{{localize "yugen-party-resources.settings.container-actor-id.name"}}</legend>
+			<input type="text" name="containerActorId" value="{{containerActorId}}" placeholder="e.g. Party Chest" />
+		</fieldset>
 	</div>
 
-	<div class="yugen-config-container-setting">
-		<label>
-			{{localize "yugen-party-resources.settings.container-actor-id.name"}}
-			<i class="fas fa-question-circle" data-tooltip="{{localize 'yugen-party-resources.settings.container-actor-id.hint'}}"></i>
-		</label>
-		<input type="text" name="containerActorId" value="{{containerActorId}}" placeholder="e.g. Party Chest" />
-	</div>
-
-	<div class="yugen-config-actions">
-		<button type="submit" class="yugen-config-btn primary">
+	<div class="sheet-footer">
+		<button type="submit">
 			<i class="fas fa-save"></i> {{localize "yugen-party-resources.config.save-btn"}}
 		</button>
 	</div>
-</div>
+</form>

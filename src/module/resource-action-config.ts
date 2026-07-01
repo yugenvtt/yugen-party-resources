@@ -20,11 +20,13 @@ export class ResourceActionConfig extends HandlebarsApplicationMixin( Applicatio
 	static override DEFAULT_OPTIONS = 
 	{
 		id: 'yugen-party-resources-action-config',
-		tag: 'form',
+		classes: [ 
+			'yugen-app', 
+			'app' 
+		],
 		window: 
 		{
-			title: 'yugen-party-resources.config.action-title',
-			icon: 'fas fa-code',
+			title: 'yugen-party-resources',
 			resizable: true
 		},
 		position: 
@@ -39,7 +41,7 @@ export class ResourceActionConfig extends HandlebarsApplicationMixin( Applicatio
 	 **/
 	override get title( ): string 
 	{
-		return ( game as any ).i18n.localize( 'yugen-party-resources.config.action-title' );
+		return 'yugen-party-resources';
 	}
 
 	static override PARTS = 
@@ -72,7 +74,8 @@ export class ResourceActionConfig extends HandlebarsApplicationMixin( Applicatio
 	{
 		super._onRender( context, options );
 
-		this.element.addEventListener( 'submit', ( event: Event ) => 
+		const form = this.element.querySelector( 'form' ) || this.element;
+		form.addEventListener( 'submit', ( event: Event ) => 
 		{
 			event.preventDefault( );
 			const macro_select = this.element.querySelector( '[name="macroId"]' ) as HTMLSelectElement;

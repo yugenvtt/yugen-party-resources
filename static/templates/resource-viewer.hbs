@@ -1,17 +1,25 @@
-<div class="yugen-resource-viewer-dialog">
-	<div class="yugen-viewer-list">
-		{{#each resources}}
-		<div class="yugen-viewer-row {{#if this.has_click_action}}is-clickable{{/if}}" data-id="{{this.id}}">
-			<div class="yugen-viewer-icon-container" title="{{this.label}}">
-				{{#if this.is_fa}}
-				<i class="{{this.icon}}"></i>
-				{{else}}
-				<img src="{{this.icon}}" />
-				{{/if}}
-			</div>
-			<span class="yugen-viewer-label">{{this.label}}</span>
-			<span class="yugen-viewer-value">{{this.value}}</span>
+<form style="display: flex; flex-direction: column; height: 100%; width: 100%;">
+	<header class="sheet-header">
+		<div class="header-details">
+			<h1 class="charname">Party Resources</h1>
 		</div>
-		{{/each}}
+	</header>
+
+	<div class="yugen-config-body" style="padding: 16px;">
+		<div class="yugen-viewer-list">
+			{{#each resources}}
+			<div class="yugen-viewer-row {{#if this.has_click_action}}is-clickable{{/if}}" data-id="{{this.id}}">
+				<div class="yugen-viewer-icon-container" title="{{this.label}}">
+					{{#if this.is_fa}}
+					<i class="{{this.icon}}"></i>
+					{{else}}
+					<img src="{{this.icon}}" />
+					{{/if}}
+				</div>
+				<span class="yugen-viewer-label">{{this.label}}</span>
+				<span class="yugen-viewer-value">{{this.value}}</span>
+			</div>
+			{{/each}}
+		</div>
 	</div>
-</div>
+</form>

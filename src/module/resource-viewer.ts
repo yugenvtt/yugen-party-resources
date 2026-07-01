@@ -35,11 +35,14 @@ export class ResourceViewer extends HandlebarsApplicationMixin( ApplicationV2 )
 	static override DEFAULT_OPTIONS = 
 	{
 		id: 'yugen-party-resources-viewer',
-		classes: [ 'yugen-party-resources-viewer-window' ],
+		classes: [ 
+			'yugen-party-resources-viewer-window', 
+			'yugen-app', 
+			'app' 
+		],
 		window: 
 		{
-			title: 'yugen-party-resources.viewer.title',
-			icon: 'fas fa-briefcase',
+			title: 'Party Resources',
 			resizable: true
 		},
 		position: 
@@ -54,7 +57,7 @@ export class ResourceViewer extends HandlebarsApplicationMixin( ApplicationV2 )
 	 **/
 	override get title( ): string 
 	{
-		return ( game as any ).i18n.localize( 'yugen-party-resources.viewer.title' );
+		return 'Party Resources';
 	}
 
 	static override PARTS = 

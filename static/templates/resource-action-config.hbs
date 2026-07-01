@@ -1,21 +1,29 @@
-<div class="yugen-resource-action-dialog">
-	<div class="yugen-action-field">
-		<label>{{localize "yugen-party-resources.config.macro-label"}}</label>
-		<select name="macroId">
-			<option value="">-- None --</option>
-			{{#each macros}}
-			<option value="{{this.id}}" {{#if (eq this.id ../resource.macroId)}}selected{{/if}}>{{this.name}}</option>
-			{{/each}}
-		</select>
-	</div>
-	<div class="yugen-action-field">
-		<label>{{localize "yugen-party-resources.config.script-label"}}</label>
-		<textarea name="script" placeholder="const token = canvas.tokens.controlled[0]; ...">{{resource.script}}</textarea>
+<form style="display: flex; flex-direction: column; height: 100%; width: 100%;">
+	<header class="sheet-header">
+		<div class="header-details">
+			<h1 class="charname">yugen-party-resources</h1>
+		</div>
+	</header>
+
+	<div class="yugen-config-body">
+		<div class="form-group">
+			<label>{{localize "yugen-party-resources.config.macro-label"}}</label>
+			<select name="macroId">
+				<option value="">-- None --</option>
+				{{#each macros}}
+				<option value="{{this.id}}" {{#if (eq this.id ../resource.macroId)}}selected{{/if}}>{{this.name}}</option>
+				{{/each}}
+			</select>
+		</div>
+		<div class="form-group">
+			<label>{{localize "yugen-party-resources.config.script-label"}}</label>
+			<textarea name="script" placeholder="const token = canvas.tokens.controlled[0]; ...">{{resource.script}}</textarea>
+		</div>
 	</div>
 
-	<div class="yugen-action-actions">
-		<button type="submit" class="yugen-config-btn primary">
+	<div class="sheet-footer">
+		<button type="submit">
 			<i class="fas fa-save"></i> {{localize "yugen-party-resources.config.save-action-btn"}}
 		</button>
 	</div>
-</div>
+</form>

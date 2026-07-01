@@ -29,11 +29,13 @@ export class ResourceConfig extends HandlebarsApplicationMixin( ApplicationV2 )
 	static override DEFAULT_OPTIONS = 
 	{
 		id: 'yugen-party-resources-config',
-		tag: 'form',
+		classes: [ 
+			'yugen-app', 
+			'app' 
+		],
 		window: 
 		{
-			title: 'yugen-party-resources.config.title',
-			icon: 'fas fa-sliders-h',
+			title: 'yugen-party-resources',
 			resizable: true
 		},
 		position: 
@@ -48,7 +50,7 @@ export class ResourceConfig extends HandlebarsApplicationMixin( ApplicationV2 )
 	 **/
 	override get title( ): string 
 	{
-		return ( game as any ).i18n.localize( 'yugen-party-resources.config.title' );
+		return 'yugen-party-resources';
 	}
 
 	static override PARTS = 
@@ -177,7 +179,8 @@ export class ResourceConfig extends HandlebarsApplicationMixin( ApplicationV2 )
 		} );
 
 		/** submit listener to save adjustments **/
-		this.element.addEventListener( 'submit', async ( event: Event ) => 
+		const form = this.element.querySelector( 'form' ) || this.element;
+		form.addEventListener( 'submit', async ( event: Event ) => 
 		{
 			event.preventDefault( );
 			this._sync_from_dom( );
@@ -235,7 +238,7 @@ export class ResourceConfig extends HandlebarsApplicationMixin( ApplicationV2 )
 	 **/
 	private _sync_from_dom( ): void 
 	{
-		const form = this.element as HTMLFormElement;
+		const form = this.element.querySelector( 'form' ) || this.element;
 		if ( !form ) 
 		{
 			return;
