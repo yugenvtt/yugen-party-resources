@@ -1,6 +1,6 @@
 {
 	"name": "yugen-party-resources",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "party resources manager for campaigns with macros and customization.",
 	"main": "index.js",
 	"type": "module",
