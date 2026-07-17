@@ -22,7 +22,7 @@
 						<i class="fas fa-file-import"></i>
 					</button>
 				</div>
-				<input type="number" name="value-{{@index}}" value="{{this.value}}" placeholder="{{localize 'yugen-party-resources.config.value-placeholder'}}" required style="width: 70px; text-align: center; flex: none;" />
+				<input type="number" name="value-{{@index}}" value="{{this.value}}" placeholder="{{localize 'yugen-party-resources.config.value-placeholder'}}" required style="width: 55px; text-align: center; padding: 8px 4px; flex: none;" />
 				<button type="button" class="{{#if (or this.macroId this.script)}}active{{/if}}" data-action="edit-action" data-index="{{@index}}" title="Configure Click Actions" style="{{#if (or this.macroId this.script)}}color: var(--yugen-accent); border-color: var(--yugen-accent-border);{{/if}}">
 					<i class="fas fa-code"></i>
 				</button>
