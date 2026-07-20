@@ -1,7 +1,7 @@
 {
 	"id": "yugen-party",
 	"title": "yugen-party",
-	"description": "A party sidebar and resources bar for Foundry VTT.",
+	"description": "Party UI, Custom Pause Menu, Party Resources Manager, and a DMMd, Persona, and Baldur's Gate 3 inspired party sidebar and resources bar for Foundry VTT.",
 	"version": "2.0.0",
 	"authors": [
 		{
@@ -11,7 +11,7 @@
 		}
 	],
 	"compatibility": {
-		"minimum": "12",
+		"minimum": "13",
 		"verified": "14"
 	},
 	"scripts": [
