@@ -14,7 +14,7 @@ export class ResourceViewer extends HandlebarsApplicationMixin( ApplicationV2 )
 		super( options );
 
 		/** refresh viewer when resources setting changes **/
-		Hooks.on( 'yugen-party-resources.refresh', ( ) => 
+		Hooks.on( 'yugen-party.refresh-resources', ( ) => 
 		{
 			if ( this.state === ( ApplicationV2 as any ).RENDER_STATES.RENDERED ) 
 			{
@@ -64,13 +64,13 @@ export class ResourceViewer extends HandlebarsApplicationMixin( ApplicationV2 )
 	{
 		viewer: 
 		{
-			template: 'modules/yugen-party-resources/templates/resource-viewer.hbs'
+			template: 'modules/yugen-party/templates/resource-viewer.hbs'
 		}
 	};
 
 	override async _prepareContext( _options: any ): Promise<any> 
 	{
-		let resources = ( game as any ).settings.get( 'yugen-party-resources', 'resources' ) || [ ];
+		let resources = ( game as any ).settings.get( 'yugen-party', 'resources' ) || [ ];
 		if ( Array.isArray( resources ) && resources.length > 0 && Array.isArray( resources[ 0 ] ) ) 
 		{
 			resources = resources[ 0 ];

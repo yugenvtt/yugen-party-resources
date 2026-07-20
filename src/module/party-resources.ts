@@ -30,21 +30,21 @@ export class PartyResources extends ( foundry.applications.api.ApplicationV2 as 
 	 **/
 	async _prepareContext( _options: any ): Promise<any> 
 	{
-		const scale = ( game as any ).settings.get( 'yugen-party-resources', 'ui-scale' ) || 1.0;
-		const opacity = ( game as any ).settings.get( 'yugen-party-resources', 'ui-opacity' ) || 0.9;
-		const offset_x = ( game as any ).settings.get( 'yugen-party-resources', 'ui-offset-x' ) || 0;
-		const offset_y = ( game as any ).settings.get( 'yugen-party-resources', 'ui-offset-y' ) || 0;
-		const minimized = ( game as any ).settings.get( 'yugen-party-resources', 'minimized' ) || false;
-		const hide_ui = ( game as any ).settings.get( 'yugen-party-resources', 'hide-ui' ) || false;
+		const scale = ( game as any ).settings.get( 'yugen-party', 'resources-scale' ) || 1.0;
+		const opacity = ( game as any ).settings.get( 'yugen-party', 'resources-opacity' ) || 0.9;
+		const offset_x = ( game as any ).settings.get( 'yugen-party', 'resources-offset-x' ) || 0;
+		const offset_y = ( game as any ).settings.get( 'yugen-party', 'resources-offset-y' ) || 0;
+		const minimized = ( game as any ).settings.get( 'yugen-party', 'resources-minimized' ) || false;
+		const hide_ui = ( game as any ).settings.get( 'yugen-party', 'resources-hide-ui' ) || false;
 
 		const is_gm = ( game as any ).user.isGM;
-		let resources = ( game as any ).settings.get( 'yugen-party-resources', 'resources' ) || [ ];
+		let resources = ( game as any ).settings.get( 'yugen-party', 'resources' ) || [ ];
 		if ( Array.isArray( resources ) && resources.length > 0 && Array.isArray( resources[ 0 ] ) ) 
 		{
 			resources = resources[ 0 ];
 		}
 
-		console.log( 'yugen-party-resources | preparing context:', { scale, opacity, offset_x, offset_y, minimized, resources, is_gm, hide_ui } );
+		console.log( 'yugen-party | preparing context:', { scale, opacity, offset_x, offset_y, minimized, resources, is_gm, hide_ui } );
 
 		return ( 
 		{
@@ -78,7 +78,7 @@ export class PartyResources extends ( foundry.applications.api.ApplicationV2 as 
 		const is_gm = context.is_gm;
 		const resources = context.resources;
 
-		console.log( 'yugen-party-resources | rendering HTML. minimized:', minimized, 'resources count:', resources.length, 'is_gm:', is_gm );
+		console.log( 'yugen-party | rendering HTML. minimized:', minimized, 'resources count:', resources.length, 'is_gm:', is_gm );
 
 		/** position styles dynamically calculated **/
 		const bar_style = `
@@ -132,7 +132,7 @@ export class PartyResources extends ( foundry.applications.api.ApplicationV2 as 
 						${ list_html }
 					</ul>
 					<div class="yugen-bar-actions">
-						<button class="yugen-bar-action-btn" data-action="view" title="${ ( game as any ).i18n.localize( 'yugen-party-resources.viewer.view-all' ) }">
+						<button class="yugen-bar-action-btn" data-action="view" title="${ ( game as any ).i18n.localize( 'yugen-party.viewer.view-all' ) }">
 							<i class="fas fa-backpack"></i>
 						</button>
 						<button class="yugen-bar-toggle" data-action="minimize" title="Minimize">
@@ -156,13 +156,13 @@ export class PartyResources extends ( foundry.applications.api.ApplicationV2 as 
 	 **/
 	_replaceHTML( result: any, content: any, options: any ): void 
 	{
-		console.log( 'yugen-party-resources | replacing HTML. element:', !!this.element );
+		console.log( 'yugen-party | replacing HTML. element:', !!this.element );
 		content.innerHTML = result;
 
 		/** view button **/
 		content.querySelector( '[data-action="view"]' )?.addEventListener( 'click', ( ) => 
 		{
-			const container_id = ( game as any ).settings.get( 'yugen-party-resources', 'container-actor-id' );
+			const container_id = ( game as any ).settings.get( 'yugen-party', 'resources-container-actor-id' );
 			let sheet_doc = null;
 
 			if ( container_id ) 
@@ -217,14 +217,14 @@ export class PartyResources extends ( foundry.applications.api.ApplicationV2 as 
 		/** minimize button **/
 		content.querySelector( '[data-action="minimize"]' )?.addEventListener( 'click', async ( ) => 
 		{
-			await ( game as any ).settings.set( 'yugen-party-resources', 'minimized', true );
+			await ( game as any ).settings.set( 'yugen-party', 'resources-minimized', true );
 			this.render( );
 		} );
 
 		/** expand button **/
 		content.querySelector( '[data-action="expand"]' )?.addEventListener( 'click', async ( ) => 
 		{
-			await ( game as any ).settings.set( 'yugen-party-resources', 'minimized', false );
+			await ( game as any ).settings.set( 'yugen-party', 'resources-minimized', false );
 			this.render( );
 		} );
 
@@ -257,7 +257,7 @@ export class PartyResources extends ( foundry.applications.api.ApplicationV2 as 
 	 **/
 	public static async execute_click_action( id: string ): Promise<void> 
 	{
-		let resources = ( game as any ).settings.get( 'yugen-party-resources', 'resources' ) || [ ];
+		let resources = ( game as any ).settings.get( 'yugen-party', 'resources' ) || [ ];
 		if ( Array.isArray( resources ) && resources.length > 0 && Array.isArray( resources[ 0 ] ) ) 
 		{
 			resources = resources[ 0 ];
@@ -285,7 +285,7 @@ export class PartyResources extends ( foundry.applications.api.ApplicationV2 as 
 				} 
 				catch ( e ) 
 				{
-					console.error( 'yugen-party-resources | error executing macro:', e );
+					console.error( 'yugen-party | error executing macro:', e );
 				}
 			}
 		}
@@ -300,7 +300,7 @@ export class PartyResources extends ( foundry.applications.api.ApplicationV2 as 
 			} 
 			catch ( e ) 
 			{
-				console.error( 'yugen-party-resources | error executing custom script:', e );
+				console.error( 'yugen-party | error executing custom script:', e );
 			}
 		}
 	}

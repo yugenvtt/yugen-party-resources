@@ -16,14 +16,14 @@ export class ResourceConfig extends HandlebarsApplicationMixin( ApplicationV2 )
 		super( options );
 
 		/** load deep copy of current resources from settings **/
-		let current = ( game as any ).settings.get( 'yugen-party-resources', 'resources' ) || [ ];
+		let current = ( game as any ).settings.get( 'yugen-party', 'resources' ) || [ ];
 		if ( Array.isArray( current ) && current.length > 0 && Array.isArray( current[ 0 ] ) ) 
 		{
 			current = current[ 0 ];
 		}
 		this._resources = ( foundry.utils as any ).duplicate( current );
 
-		console.log( 'yugen-party-resources | ResourceConfig instantiated:', this._resources );
+		console.log( 'yugen-party | ResourceConfig instantiated:', this._resources );
 	}
 
 	static override DEFAULT_OPTIONS = 
@@ -35,7 +35,7 @@ export class ResourceConfig extends HandlebarsApplicationMixin( ApplicationV2 )
 		],
 		window: 
 		{
-			title: 'yugen-party-resources',
+			title: 'yugen-party',
 			resizable: true
 		},
 		position: 
@@ -50,14 +50,14 @@ export class ResourceConfig extends HandlebarsApplicationMixin( ApplicationV2 )
 	 **/
 	override get title( ): string 
 	{
-		return 'yugen-party-resources';
+		return 'yugen-party';
 	}
 
 	static override PARTS = 
 	{
 		config: 
 		{
-			template: 'modules/yugen-party-resources/templates/resource-config.hbs'
+			template: 'modules/yugen-party/templates/resource-config.hbs'
 		}
 	};
 
@@ -66,8 +66,8 @@ export class ResourceConfig extends HandlebarsApplicationMixin( ApplicationV2 )
 	 **/
 	override async _prepareContext( _options: any ): Promise<any> 
 	{
-		console.log( 'yugen-party-resources | ResourceConfig preparing context:', this._resources );
-		const containerActorId = ( game as any ).settings.get( 'yugen-party-resources', 'container-actor-id' ) || '';
+		console.log( 'yugen-party | ResourceConfig preparing context:', this._resources );
+		const containerActorId = ( game as any ).settings.get( 'yugen-party', 'resources-container-actor-id' ) || '';
 		return ( 
 		{
 			resources: this._resources,
@@ -81,7 +81,7 @@ export class ResourceConfig extends HandlebarsApplicationMixin( ApplicationV2 )
 	override _onRender( context: any, options: any ): void 
 	{
 		super._onRender( context, options );
-		console.log( 'yugen-party-resources | ResourceConfig rendering. element:', !!this.element );
+		console.log( 'yugen-party | ResourceConfig rendering. element:', !!this.element );
 
 		/** handle addition of a new resource row **/
 		this.element.querySelector( '[data-action="add"]' )?.addEventListener( 'click', ( ) => 
@@ -185,15 +185,15 @@ export class ResourceConfig extends HandlebarsApplicationMixin( ApplicationV2 )
 			event.preventDefault( );
 			this._sync_from_dom( );
 
-			const old_resources = ( game as any ).settings.get( 'yugen-party-resources', 'resources' ) || [ ];
+			const old_resources = ( game as any ).settings.get( 'yugen-party', 'resources' ) || [ ];
 
 			/** update world setting database **/
-			await ( game as any ).settings.set( 'yugen-party-resources', 'resources', this._resources );
+			await ( game as any ).settings.set( 'yugen-party', 'resources', this._resources );
 
 			const container_input = this.element.querySelector( '[name="containerActorId"]' ) as HTMLInputElement;
 			if ( container_input ) 
 			{
-				await ( game as any ).settings.set( 'yugen-party-resources', 'container-actor-id', container_input.value.trim( ) );
+				await ( game as any ).settings.set( 'yugen-party', 'resources-container-actor-id', container_input.value.trim( ) );
 			}
 
 			/** post created or edited resource changes to chat **/

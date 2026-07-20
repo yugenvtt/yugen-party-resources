@@ -28,7 +28,7 @@ export default defineConfig( async ( { mode } ) =>
 	return ( 
 	{
 		root: 'src',
-		base: '/modules/yugen-party-resources/',
+		base: '/modules/yugen-party-ui/',
 		publicDir: path.resolve( __dirname, 'static' ),
 		build: 
 		{

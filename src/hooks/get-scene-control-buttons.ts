@@ -14,8 +14,8 @@ export const get_scene_control_buttons_hook = ( ) =>
 		/** register viewer tool on the token layer for all users **/
 		const viewer_tool = 
 		{
-			name: 'yugen-party-resources-viewer',
-			title: ( game as any ).i18n.localize( 'yugen-party-resources.viewer.title' ),
+			name: 'yugen-party-viewer',
+			title: ( game as any ).i18n.localize( 'yugen-party.viewer.title' ),
 			icon: 'fas fa-briefcase',
 			onClick: ( ) => 
 			{
@@ -34,8 +34,8 @@ export const get_scene_control_buttons_hook = ( ) =>
 		{
 			const tool = 
 			{
-				name: 'yugen-party-resources-config',
-				title: ( game as any ).i18n.localize( 'yugen-party-resources.config.title' ),
+				name: 'yugen-party-config',
+				title: ( game as any ).i18n.localize( 'yugen-party.config.title' ),
 				icon: 'fas fa-sliders-h',
 				onClick: ( ) => 
 				{

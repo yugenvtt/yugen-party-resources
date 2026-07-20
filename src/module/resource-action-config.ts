@@ -26,7 +26,7 @@ export class ResourceActionConfig extends HandlebarsApplicationMixin( Applicatio
 		],
 		window: 
 		{
-			title: 'yugen-party-resources',
+			title: 'yugen-party',
 			resizable: true
 		},
 		position: 
@@ -41,14 +41,14 @@ export class ResourceActionConfig extends HandlebarsApplicationMixin( Applicatio
 	 **/
 	override get title( ): string 
 	{
-		return 'yugen-party-resources';
+		return 'yugen-party';
 	}
 
 	static override PARTS = 
 	{
 		actionConfig: 
 		{
-			template: 'modules/yugen-party-resources/templates/resource-action-config.hbs'
+			template: 'modules/yugen-party/templates/resource-action-config.hbs'
 		}
 	};
 

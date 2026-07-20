@@ -1,28 +1,28 @@
 <form style="display: flex; flex-direction: column; height: 100%; width: 100%;">
 	<header class="sheet-header">
 		<div class="header-details">
-			<h1 class="charname">yugen-party-resources</h1>
+			<h1 class="charname">yugen-party</h1>
 		</div>
 	</header>
 
 	<div class="yugen-config-body">
 		<div class="form-group" style="margin-bottom: 20px;">
 			<button type="button" data-action="add" style="width: 100%;">
-				<i class="fas fa-plus"></i> {{localize "yugen-party-resources.config.add-btn"}}
+				<i class="fas fa-plus"></i> {{localize "yugen-party.config.add-btn"}}
 			</button>
 		</div>
 
 		{{#each resources}}
 		<fieldset class="form-group" style="padding: 12px;">
 			<div class="form-fields">
-				<input type="text" name="label-{{@index}}" value="{{this.label}}" placeholder="{{localize 'yugen-party-resources.config.label-placeholder'}}" required style="flex: 1.5;" />
+				<input type="text" name="label-{{@index}}" value="{{this.label}}" placeholder="{{localize 'yugen-party.config.label-placeholder'}}" required style="flex: 1.5;" />
 				<div class="yugen-input-with-button" style="display: flex; gap: 4px; flex: 2;">
-					<input type="text" name="icon-{{@index}}" value="{{this.icon}}" placeholder="{{localize 'yugen-party-resources.config.icon-placeholder'}}" required />
+					<input type="text" name="icon-{{@index}}" value="{{this.icon}}" placeholder="{{localize 'yugen-party.config.icon-placeholder'}}" required />
 					<button type="button" data-target="icon-{{@index}}" class="yugen-file-picker-btn" title="Browse Files" style="flex: 0 0 34px;">
 						<i class="fas fa-file-import"></i>
 					</button>
 				</div>
-				<input type="number" name="value-{{@index}}" value="{{this.value}}" placeholder="{{localize 'yugen-party-resources.config.value-placeholder'}}" required style="width: 55px; text-align: center; padding: 8px 4px; flex: none;" />
+				<input type="number" name="value-{{@index}}" value="{{this.value}}" placeholder="{{localize 'yugen-party.config.value-placeholder'}}" required style="width: 55px; text-align: center; padding: 8px 4px; flex: none;" />
 				<button type="button" class="{{#if (or this.macroId this.script)}}active{{/if}}" data-action="edit-action" data-index="{{@index}}" title="Configure Click Actions" style="{{#if (or this.macroId this.script)}}color: var(--yugen-accent); border-color: var(--yugen-accent-border);{{/if}}">
 					<i class="fas fa-code"></i>
 				</button>
@@ -34,14 +34,14 @@
 		{{/each}}
 
 		<fieldset>
-			<legend>{{localize "yugen-party-resources.settings.container-actor-id.name"}}</legend>
+			<legend>{{localize "yugen-party.settings.resources-container-actor-id.name"}}</legend>
 			<input type="text" name="containerActorId" value="{{containerActorId}}" placeholder="e.g. Party Chest" />
 		</fieldset>
 	</div>
 
 	<div class="sheet-footer">
 		<button type="submit">
-			<i class="fas fa-save"></i> {{localize "yugen-party-resources.config.save-btn"}}
+			<i class="fas fa-save"></i> {{localize "yugen-party.config.save-btn"}}
 		</button>
 	</div>
 </form>
