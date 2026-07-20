@@ -4,9 +4,7 @@ A customizable party HUD, floating resources bar, and custom pause menu for Foun
 
 ---
 
-## Features
-
-### 1. Party HUD Sidebar
+### Party HUD Sidebar
 
 A clean sidebar to track your party's health, inspiration, and active effects.
 
@@ -18,7 +16,7 @@ A clean sidebar to track your party's health, inspiration, and active effects.
 
 ---
 
-### 2. Custom Pause Menu
+### Custom Pause Menu
 
 Replaces the default pause screen with a stylized character sheet showcase when the game is paused.
 
@@ -29,7 +27,7 @@ Replaces the default pause screen with a stylized character sheet showcase when 
 
 ---
 
-### 3. Floating Resources Bar
+### Party Resources Manager
 
 A handy bar at the bottom of the screen to track shared party items like gold coins, rations, or mana.
 
